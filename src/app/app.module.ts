@@ -19,12 +19,7 @@ import { EditItemModalComponent } from './edit-item-modal/edit-item-modal.compon
     BudgetItemCardComponent,
     EditItemModalComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    BrowserAnimationModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
