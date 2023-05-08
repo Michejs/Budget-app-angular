@@ -9,9 +9,12 @@ import { BudgetITem } from 'src/shared/modals/budgets-items.model';
 export class BudgetItemCardComponent {
   @Input() item: BudgetITem | any;
   @Output() xButtonClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output() cardClick: EventEmitter<any> = new EventEmitter<any>();
 
   onXButtonclick() {
     this.xButtonClick.emit();
-    console.log('tomamma1');
+  }
+  onCardClick() {
+    this.cardClick.emit();
   }
 }

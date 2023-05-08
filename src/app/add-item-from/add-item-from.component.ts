@@ -11,6 +11,16 @@ export class AddItemFromComponent {
   @Input() item: BudgetITem = new BudgetITem('', 0);
   @Output() formSubmit: EventEmitter<BudgetITem> =
     new EventEmitter<BudgetITem>();
+  isNewItem: Boolean | any;
+
+  ngOnInit() {
+    if (this.item) {
+      this.isNewItem = false;
+    } else {
+      this.isNewItem = true;
+      this.item = new BudgetITem('', null);
+    }
+  }
 
   onSubmit(form: NgForm) {
     this.formSubmit.emit(form.value);
