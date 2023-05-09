@@ -11,7 +11,7 @@ import { EditItemModalComponent } from '../edit-item-modal/edit-item-modal.compo
 export class BudgetItemListComponent {
   @Input() budgetItems: BudgetITem[] | any;
   @Output() delete: EventEmitter<BudgetITem> = new EventEmitter<BudgetITem>();
-
+  @Output() update: EventEmitter<UpdateEvent> = new EventEmitter<UpdateEvent>();
   constructor(public dialog: MatDialog) {}
   onDeleteButtonClicked(item: BudgetITem) {
     this.delete.emit(item);
@@ -24,7 +24,15 @@ export class BudgetItemListComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.budgetItems[this.budgetItems.indexOf(item)] = result;
+        this.update.emit({
+          old: item,
+          new: result,
+        });
       }
     });
   }
+}
+export interface UpdateEvent {
+  old: BudgetITem;
+  new: BudgetITem;
 }
